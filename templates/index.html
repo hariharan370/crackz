@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crackz</title>
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        /* Container for the search form */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Search form */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Results section */
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .result h2 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .result a {
+            color: #007bff;
+            font-size: 18px;
+            text-decoration: none;
+        }
+
+        .result a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            input[type="text"], button {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .result h2 {
+                font-size: 18px;
+            }
+
+            .result a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            input[type="text"], button {
+                width: 100%;
+            }
+
+            .result {
+                padding: 15px;
+            }
+
+            .result a {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Crackz!
+        </h1>
+        <form method="POST">
+            <input type="text" name="query" placeholder="Enter search query" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if query %}
+        <div class="result">
+            <h2>Results for: "{{ query }}"</h2>
+            {% if result %}
+            <p><a href="{{ result }}" target="_blank"><u>Click this to open</u></a>
+            </p>
+            {% else %}
+            <p>No results found or an error occurred.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
